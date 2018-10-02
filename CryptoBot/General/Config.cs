@@ -1,7 +1,5 @@
-﻿using System.Collections.Generic;
-using CryptoBot.Core.General.Interface;
+﻿using CryptoBot.Core.General.Interface;
 using System.Threading.Tasks;
-using System.IO;
 
 namespace CryptoBot.Core.General
 {

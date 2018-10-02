@@ -1,7 +1,6 @@
 ﻿using CryptoBot.Core.General;
 using CryptoBot.Core.General.Interface;
 using CryptoBot.Core.General.Logger;
-using System;
 using System.Threading.Tasks;
 using Unity;
 

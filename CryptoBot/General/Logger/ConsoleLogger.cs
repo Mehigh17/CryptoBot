@@ -1,8 +1,6 @@
 ﻿using CryptoBot.Core.General.Interface;
 using Discord;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace CryptoBot.Core.General.Logger

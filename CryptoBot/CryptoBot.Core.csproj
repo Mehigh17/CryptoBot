@@ -10,4 +10,8 @@
     <PackageReference Include="Unity" Version="5.8.11" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CryptoBot.Commands\CryptoBot.Commands.csproj" />
+  </ItemGroup>
+
 </Project>
