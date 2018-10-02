@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2026
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoBot.Core", "CryptoBot\CryptoBot.Core.csproj", "{128E1F06-8E09-4FE8-A645-CB51B72AF9C1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CryptoBot.Core", "CryptoBot\CryptoBot.Core.csproj", "{128E1F06-8E09-4FE8-A645-CB51B72AF9C1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoBot.Commands", "CryptoBot.Commands\CryptoBot.Commands.csproj", "{5D8FEFFB-7AE8-4308-B005-8CC5FD87ED79}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoBot.Test", "CryptoBot.Test\CryptoBot.Test.csproj", "{C2DB4231-F7A9-436F-A100-CD0B95D9D716}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{128E1F06-8E09-4FE8-A645-CB51B72AF9C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{128E1F06-8E09-4FE8-A645-CB51B72AF9C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{128E1F06-8E09-4FE8-A645-CB51B72AF9C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D8FEFFB-7AE8-4308-B005-8CC5FD87ED79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D8FEFFB-7AE8-4308-B005-8CC5FD87ED79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D8FEFFB-7AE8-4308-B005-8CC5FD87ED79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D8FEFFB-7AE8-4308-B005-8CC5FD87ED79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2DB4231-F7A9-436F-A100-CD0B95D9D716}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2DB4231-F7A9-436F-A100-CD0B95D9D716}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2DB4231-F7A9-436F-A100-CD0B95D9D716}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2DB4231-F7A9-436F-A100-CD0B95D9D716}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
