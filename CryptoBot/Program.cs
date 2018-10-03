@@ -1,6 +1,9 @@
-﻿using CryptoBot.Core.General;
+﻿using CryptoBot.Commands.Service;
+using CryptoBot.Core.General;
 using CryptoBot.Core.General.Interface;
 using CryptoBot.Core.General.Logger;
+using CryptoBot.Core.General.Module;
+using CryptoBot.Core.General.Tracker;
 using System.Threading.Tasks;
 using Unity;
 
@@ -12,13 +15,28 @@ namespace CryptoBot.Core
 
         private async Task MainAsync(string[] args)
         {
+            var config = new Config();
+            await config.Load();
+
+            var commandService = new CommandHandlerService();
+
             var container = new UnityContainer();
-            container.RegisterType<IConfig, Config>();
             container.RegisterType<ILogger, ConsoleLogger>();
 
-            var bot = container.Resolve<Bot>();
-            await bot.Start();
+            container.RegisterInstance(commandService);
+            container.RegisterInstance<IConfig>(config);
 
+            var apiTracker = container.Resolve<CoinApiTracker>();
+
+            container.RegisterInstance<ITracker>(apiTracker);
+
+            commandService.RegisterModule(new GeneralModule());
+            var trackerModule = container.Resolve<CurrencyTrackerModule>();
+            commandService.RegisterModule(trackerModule);
+            
+            var bot = container.Resolve<Bot>();
+
+            await bot.Start();
             await Task.Delay(-1);
         }
 
