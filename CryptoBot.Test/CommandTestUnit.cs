@@ -2,7 +2,7 @@
 using CryptoBot.Commands.Interface;
 using CryptoBot.Commands.Service;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-
+using System.Threading.Tasks;
 
 namespace CryptoBot.Test
 {
@@ -17,13 +17,13 @@ namespace CryptoBot.Test
             public string FakeDummyString { get; set; }
 
             [Command("dummy")]
-            public void DummyCommand()
+            public void DummyCommand(string[] args)
             {
                 DummyString = "Executed.";
             }
 
             [Command("fake-dummy")]
-            public void FakeDummy()
+            public void FakeDummy(string[] args)
             {
                 FakeDummyString = "Executed.";
             }
@@ -35,7 +35,7 @@ namespace CryptoBot.Test
             public int DummyInteger { get; set; }
 
             [Command("pimp-my-int")]
-            public void ChangeInteger()
+            public void ChangeInteger(string[] args)
             {
                 DummyInteger = 420;
             }
@@ -53,7 +53,7 @@ namespace CryptoBot.Test
             var service = new CommandHandlerService();
             var cmdModule = new GeneralCommandModule();
             service.RegisterModule(cmdModule);
-            service.ExecuteCommandAsync("dummy").Wait();
+            service.ExecuteCommandAsync("dummy", new string[0]).Wait();
             
             Assert.AreEqual("Executed.", cmdModule.DummyString);
             Assert.AreNotEqual("Executed.", cmdModule.FakeDummyString);
