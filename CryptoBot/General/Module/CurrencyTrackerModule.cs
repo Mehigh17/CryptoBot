@@ -12,7 +12,7 @@ namespace CryptoBot.Core.General.Module
     public class CurrencyTrackerModule : IModule
     {
 
-        private ITracker _tracker;
+        private readonly ITracker _tracker;
 
         public CurrencyTrackerModule(ITracker tracker)
         {
@@ -24,17 +24,44 @@ namespace CryptoBot.Core.General.Module
         {
             if(msg != null)
             {
-                if(args.Length == 2)
+                if(args.Length == 1)
                 {
-                    var baseCurrency = args[0];
-                    var quoteCurrency = args[1];
+                    var baseCurrency = args[0].ToUpper();
+                    var quoteCurrency = "USD";
 
                     var price = await _tracker.GetCurrencyPrice(baseCurrency, quoteCurrency);
-                    await msg.Channel.SendMessageAsync($"The conversion rate between {baseCurrency} and {quoteCurrency} is {price}");
+                    await msg.Channel.SendMessageAsync($"The conversion rate is {price} {quoteCurrency} per {baseCurrency}");
+                }
+                else if(args.Length == 2)
+                {
+                    var baseCurrency = args[0].ToUpper();
+                    var quoteCurrency = args[1].ToUpper();
+
+                    var price = await _tracker.GetCurrencyPrice(baseCurrency, quoteCurrency);
+                    await msg.Channel.SendMessageAsync($"The conversion rate is {price} {quoteCurrency} per {baseCurrency}");
+                }
+                else if(args.Length == 3)
+                {
+                    var baseCurrency = args[0].ToUpper();
+                    var quoteCurrency = args[1].ToUpper();
+                    double amount;
+
+                    if(double.TryParse(args[2], out amount))
+                    {
+                        var price = await _tracker.GetCurrencyPrice(baseCurrency, quoteCurrency);
+                        double convertedAmount = amount * price;
+
+
+                        await msg.Channel.SendMessageAsync($"{amount} {baseCurrency} converts to {convertedAmount} {quoteCurrency}");
+                    }
+                    else
+                    {
+                        await msg.Channel.SendMessageAsync($"Your numbers are incorrectly formatted.");
+                    }
                 }
                 else
                 {
-                    await msg.Channel.SendMessageAsync("Too many args.");
+                    await msg.Channel.SendMessageAsync("Invalid arguments.");
                 }
             }
         }
