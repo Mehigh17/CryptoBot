@@ -35,6 +35,8 @@ namespace CryptoBot.Core.General.Tracker
 
         private readonly Config _config;
 
+
+
         public CoinApiTracker(IConfig config)
         {
             _config = (Config) config;
@@ -51,6 +53,7 @@ namespace CryptoBot.Core.General.Tracker
             if(response.StatusCode == HttpStatusCode.OK)
             {
                 var exchangeRate = JsonConvert.DeserializeObject<ExchangeRateResponse>(response.Content);
+                exchangeRate.Rate = Math.Round(exchangeRate.Rate, 8);
 
                 return Task.FromResult(exchangeRate.Rate);
             }
